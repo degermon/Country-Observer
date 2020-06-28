@@ -59,11 +59,58 @@
                     <connections>
                         <outlet property="searchBar" destination="27m-8K-itd" id="VIu-6e-Utj"/>
                         <outlet property="tableView" destination="Kxh-Fp-3nW" id="Tg6-yU-pv5"/>
+                        <segue destination="8nM-Ai-Idg" kind="show" identifier="JustForView" id="by4-H0-0cF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="112.5"/>
+        </scene>
+        <!--Country View Controller-->
+        <scene sceneID="gEu-ba-rAr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8d-nD-gsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ShowCountry" id="8nM-Ai-Idg" customClass="CountryViewController" customModule="Country_Observer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jj3-qf-uyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAW-bW-yos">
+                                <rect key="frame" x="10" y="103" width="394" height="688"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRB-bm-Htg">
+                                <rect key="frame" x="15" y="806" width="384" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Show Holidays"/>
+                                <connections>
+                                    <action selector="showHolidaysBtTapped:" destination="8nM-Ai-Idg" eventType="touchUpInside" id="Zv1-oz-wIC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gRB-bm-Htg" firstAttribute="top" secondItem="ZAW-bW-yos" secondAttribute="bottom" constant="15" id="13n-hD-S9e"/>
+                            <constraint firstItem="zCI-VQ-xjP" firstAttribute="bottom" secondItem="gRB-bm-Htg" secondAttribute="bottom" constant="20" id="7gL-Js-5Ad"/>
+                            <constraint firstItem="zCI-VQ-xjP" firstAttribute="trailing" secondItem="gRB-bm-Htg" secondAttribute="trailing" constant="15" id="8wa-x9-a0K"/>
+                            <constraint firstItem="gRB-bm-Htg" firstAttribute="leading" secondItem="zCI-VQ-xjP" secondAttribute="leading" constant="15" id="cIH-QJ-Uf5"/>
+                            <constraint firstItem="zCI-VQ-xjP" firstAttribute="trailing" secondItem="ZAW-bW-yos" secondAttribute="trailing" constant="10" id="iNH-mQ-aVr"/>
+                            <constraint firstItem="ZAW-bW-yos" firstAttribute="leading" secondItem="zCI-VQ-xjP" secondAttribute="leading" constant="10" id="wq2-Hz-ZbP"/>
+                            <constraint firstItem="ZAW-bW-yos" firstAttribute="top" secondItem="zCI-VQ-xjP" secondAttribute="top" constant="15" id="x6n-hU-nST"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zCI-VQ-xjP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N9d-5u-tpu"/>
+                    <connections>
+                        <outlet property="showHolidaysButton" destination="gRB-bm-Htg" id="H4v-GI-WGo"/>
+                        <outlet property="textView" destination="ZAW-bW-yos" id="EdP-dO-qiB"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1956.521739130435" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LAT-fM-Nue">

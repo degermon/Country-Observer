@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    var countryList = [Country]()
+    private var countryList = [Country]()
     var countryListForTB = [Country]() {
         didSet {
             DispatchQueue.main.async {
@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    var coutryDataForSegue: Country?
     
 // MARK: - Config
     
@@ -76,6 +77,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = countryName
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "ShowCountry") as? CountryViewController {
+            destinationVC.country = countryListForTB[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

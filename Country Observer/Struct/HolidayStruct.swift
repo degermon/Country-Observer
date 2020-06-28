@@ -17,11 +17,11 @@ struct Holidays: Decodable {
 }
 
 struct HolidayDetail: Decodable {
-    var name: String
+    var name: String?
     var date: HolidayDate
-    var description: String
+    var description: String?
 }
 
 struct HolidayDate: Decodable {
-    var iso: String
+    var iso: String?
 }

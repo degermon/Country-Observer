@@ -17,6 +17,7 @@
 		65F2B34524A4FA4800654836 /* HolidayStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B34424A4FA4800654836 /* HolidayStruct.swift */; };
 		65F2B34C24A4FD1F00654836 /* CountryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B34B24A4FD1F00654836 /* CountryRequest.swift */; };
 		65F2B34E24A4FD3900654836 /* HolidayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B34D24A4FD3900654836 /* HolidayRequest.swift */; };
+		65F2B35024A8E9B400654836 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B34F24A8E9B400654836 /* CountryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		65F2B34424A4FA4800654836 /* HolidayStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayStruct.swift; sourceTree = "<group>"; };
 		65F2B34B24A4FD1F00654836 /* CountryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRequest.swift; sourceTree = "<group>"; };
 		65F2B34D24A4FD3900654836 /* HolidayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRequest.swift; sourceTree = "<group>"; };
+		65F2B34F24A8E9B400654836 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +66,8 @@
 		65F2B32B24A4F78200654836 /* Country Observer */ = {
 			isa = PBXGroup;
 			children = (
-				65F2B33A24A4F78900654836 /* Info.plist */,
 				65F2B34A24A4FCFC00654836 /* DataRequest */,
+				65F2B33A24A4F78900654836 /* Info.plist */,
 				65F2B34824A4FA7D00654836 /* Other */,
 				65F2B34724A4FA6D00654836 /* Screen */,
 				65F2B34624A4FA5900654836 /* Struct */,
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				65F2B34024A4F96600654836 /* HomeViewController.swift */,
+				65F2B34F24A8E9B400654836 /* CountryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F2B34E24A4FD3900654836 /* HolidayRequest.swift in Sources */,
+				65F2B35024A8E9B400654836 /* CountryViewController.swift in Sources */,
 				65F2B32D24A4F78200654836 /* AppDelegate.swift in Sources */,
 				65F2B34524A4FA4800654836 /* HolidayStruct.swift in Sources */,
 				65F2B34C24A4FD1F00654836 /* CountryRequest.swift in Sources */,

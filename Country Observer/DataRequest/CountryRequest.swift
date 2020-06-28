@@ -9,8 +9,8 @@
 import Foundation
 
 enum CountryError: Error {
-    case noDataAvailable
-    case cannotProcessData
+    case noCountryDataAvailable
+    case cannotProcessCountryData
 }
 class CountryRequest {
     func getCountries(completion: @escaping (Result<[Country], CountryError>) -> ()) {
@@ -18,7 +18,7 @@ class CountryRequest {
         
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _  in
             guard let jsonData = data else {
-                completion(.failure(.noDataAvailable))
+                completion(.failure(.noCountryDataAvailable))
                 return
             }
                 
@@ -27,7 +27,7 @@ class CountryRequest {
                 let country = try decoder.decode([Country].self, from: jsonData)
                 completion(.success(country))
             } catch {
-                completion(.failure(.cannotProcessData))
+                completion(.failure(.cannotProcessCountryData))
             }
         }
         dataTask.resume()

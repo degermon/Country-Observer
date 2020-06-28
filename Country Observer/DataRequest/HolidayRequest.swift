@@ -9,8 +9,8 @@
 import Foundation
 
 enum HolidayError: Error {
-    case noDataAvailable
-    case cannotProcessData
+    case noHolidayDataAvailable
+    case cannotProcessHolidayData
 }
 
 struct HolidayRequest {
@@ -33,7 +33,7 @@ struct HolidayRequest {
     func getHolidays (completion: @escaping (Result<[HolidayDetail], HolidayError>) -> ()) {
         let dataTask = URLSession.shared.dataTask(with: resourceURL) { data, _, _  in
             guard let jsonData = data else {
-                completion(.failure(.noDataAvailable))
+                completion(.failure(.noHolidayDataAvailable))
                 return
             }
             
@@ -43,7 +43,7 @@ struct HolidayRequest {
                 let holidayDetails = holidaysResponse.response.holidays
                 completion(.success(holidayDetails))
             } catch {
-                completion(.failure(.cannotProcessData))
+                completion(.failure(.cannotProcessHolidayData))
             }
         }
         dataTask.resume()

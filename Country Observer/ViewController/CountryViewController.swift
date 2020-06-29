@@ -135,5 +135,10 @@ class CountryViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func showHolidaysBtTapped(_ sender: Any) {
+        if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "ShowHolidays") as? HolidaysViewController {
+            destinationVC.holidayList = holidays
+            destinationVC.countryName = country?.name
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 
 class HomeViewController: UIViewController {
 
@@ -14,6 +15,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var countryList = [Country]()
+    private let monitor = NWPathMonitor()
+    private let queue = DispatchQueue(label: "InternetConnectionMonitor")
+    private let alert = AppAlerts()
     var countryListForTB = [Country]() {
         didSet {
             DispatchQueue.main.async {
@@ -27,9 +31,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startInternetconnectionMonitor()
         configureTableView()
         configureSearchBar()
         getCountryList()
+    }
+    
+    func startInternetconnectionMonitor() {
+        monitor.pathUpdateHandler = { pathUpdateHandler in
+            if pathUpdateHandler.status == .unsatisfied {
+                DispatchQueue.main.async {
+                    self.present(self.alert.noInternetConnection(), animated: true, completion: nil)
+                }
+            } 
+        }
+        monitor.start(queue: queue)
     }
     
     func configureTableView() {

@@ -15,8 +15,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var countryList = [Country]()
-    private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "InternetConnectionMonitor")
     private let alert = AppAlerts()
     var countryListForTB = [Country]() {
         didSet {
@@ -38,12 +36,16 @@ class HomeViewController: UIViewController {
     }
     
     func startInternetconnectionMonitor() {
-        monitor.pathUpdateHandler = { pathUpdateHandler in
-            if pathUpdateHandler.status == .unsatisfied {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "InternetConnectionMonitor")
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("Internet conencted")
+            } else {
                 DispatchQueue.main.async {
                     self.present(self.alert.noInternetConnection(), animated: true, completion: nil)
                 }
-            } 
+            }
         }
         monitor.start(queue: queue)
     }

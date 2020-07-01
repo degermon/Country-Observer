@@ -69,7 +69,6 @@
         <!--Country View Controller-->
         <scene sceneID="gEu-ba-rAr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j8d-nD-gsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ShowCountry" id="8nM-Ai-Idg" customClass="CountryViewController" customModule="Country_Observer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jj3-qf-uyZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -110,6 +109,7 @@
                         <segue destination="kI2-5U-YPJ" kind="show" identifier="JustForView2" id="hl7-3l-y8z"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8d-nD-gsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1956.521739130435" y="112.5"/>
         </scene>
@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qxp-Ik-cEH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HolidayCell" textLabel="rFS-W0-2Ye" detailTextLabel="SJE-TO-BbI" style="IBUITableViewCellStyleSubtitle" id="mAR-Mg-ZxJ">
@@ -151,13 +151,48 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gyU-Vf-pdW">
+                                <rect key="frame" x="25" y="98" width="364" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IG-gN-4cp">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMh-UY-CeF">
+                                        <rect key="frame" x="90.5" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="All"/>
+                                        <connections>
+                                            <action selector="allFilterTapped:" destination="kI2-5U-YPJ" eventType="touchUpInside" id="UeE-4V-aCw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H10-C5-cc6">
+                                        <rect key="frame" x="168.5" y="0.0" width="77" height="30"/>
+                                        <state key="normal" title="This month"/>
+                                        <connections>
+                                            <action selector="thisMonthFilterTapped:" destination="kI2-5U-YPJ" eventType="touchUpInside" id="lCE-93-QBg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0f3-6G-d14">
+                                        <rect key="frame" x="293" y="0.0" width="71" height="30"/>
+                                        <state key="normal" title="Upcoming"/>
+                                        <connections>
+                                            <action selector="upcomingFilterTapped:" destination="kI2-5U-YPJ" eventType="touchUpInside" id="4ZY-Zh-t7v"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="gyU-Vf-pdW" firstAttribute="leading" secondItem="cUB-ak-9ej" secondAttribute="leading" constant="25" id="1lr-TJ-E0T"/>
                             <constraint firstItem="Qxp-Ik-cEH" firstAttribute="leading" secondItem="cUB-ak-9ej" secondAttribute="leading" id="Iuu-S6-EiS"/>
                             <constraint firstItem="cUB-ak-9ej" firstAttribute="trailing" secondItem="Qxp-Ik-cEH" secondAttribute="trailing" id="XOd-8r-YTR"/>
-                            <constraint firstItem="Qxp-Ik-cEH" firstAttribute="top" secondItem="cUB-ak-9ej" secondAttribute="top" id="l6I-So-xjt"/>
                             <constraint firstItem="cUB-ak-9ej" firstAttribute="bottom" secondItem="Qxp-Ik-cEH" secondAttribute="bottom" id="ld4-KT-HEr"/>
+                            <constraint firstItem="cUB-ak-9ej" firstAttribute="trailing" secondItem="gyU-Vf-pdW" secondAttribute="trailing" constant="25" id="mnl-B8-hkI"/>
+                            <constraint firstItem="gyU-Vf-pdW" firstAttribute="top" secondItem="cUB-ak-9ej" secondAttribute="top" constant="10" id="sjE-To-j4h"/>
+                            <constraint firstItem="Qxp-Ik-cEH" firstAttribute="top" secondItem="gyU-Vf-pdW" secondAttribute="bottom" constant="10" id="wlc-0I-YSY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cUB-ak-9ej"/>
                     </view>
@@ -168,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ui0-g7-I7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2955" y="113"/>
+            <point key="canvasLocation" x="2953.6231884057975" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LAT-fM-Nue">

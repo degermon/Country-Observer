@@ -31,6 +31,17 @@ class HolidaysViewController: UIViewController {
             self.title = "\(name) Holidays"
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func allFilterTapped(_ sender: Any) {
+    }
+    
+    @IBAction func thisMonthFilterTapped(_ sender: Any) {
+    }
+    
+    @IBAction func upcomingFilterTapped(_ sender: Any) {
+    }
 }
 
 extension HolidaysViewController: UITableViewDelegate, UITableViewDataSource {

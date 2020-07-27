@@ -12,11 +12,12 @@ class HolidaysViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var holidayList: [HolidayDetail] = []
+    var holidayList: [HolidayDetail] = [] 
     var countryName: String? = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        holidayList = correctDateOfHolidays(list: holidayList)
         configureTableView()
         setTitle()
     }
@@ -30,6 +31,18 @@ class HolidaysViewController: UIViewController {
         if let name = countryName {
             self.title = "\(name) Holidays"
         }
+    }
+    
+    func correctDateOfHolidays(list: [HolidayDetail]) -> [HolidayDetail] { // correct/cut date item of holiday to only date without time if there is any present
+        var index = 0
+        var correctedList: [HolidayDetail] = []
+        for item in list {
+            correctedList.append(item)
+            let correctDate = item.date.iso?.prefix(10)
+            correctedList[index].date.iso = String(correctDate ?? "")
+            index += 1
+        }
+        return correctedList
     }
     
     // MARK: - Actions

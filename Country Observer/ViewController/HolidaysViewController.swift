@@ -12,14 +12,24 @@ class HolidaysViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var holidayList: [HolidayDetail] = [] 
+    var holidayList: [HolidayDetail] = []
     var countryName: String? = ""
+    
+    private var currentDate: String = ""
+    private var holidayListForTB: [HolidayDetail] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        holidayList = correctDateOfHolidays(list: holidayList)
+        holidayListForTB = correctDateOfHolidays(list: holidayList)
         configureTableView()
         setTitle()
+        currentDate = getCurrentDate()
     }
     
     func configureTableView() {
@@ -31,6 +41,15 @@ class HolidaysViewController: UIViewController {
         if let name = countryName {
             self.title = "\(name) Holidays"
         }
+    }
+    
+    func getCurrentDate() -> String {
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate = format.string(from: date)
+        
+        return formattedDate
     }
     
     func correctDateOfHolidays(list: [HolidayDetail]) -> [HolidayDetail] { // correct/cut date item of holiday to only date without time if there is any present
@@ -48,6 +67,7 @@ class HolidaysViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func allFilterTapped(_ sender: Any) {
+        holidayListForTB = holidayList
     }
     
     @IBAction func thisMonthFilterTapped(_ sender: Any) {
@@ -65,7 +85,7 @@ extension HolidaysViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HolidayCell", for: indexPath)
-        let holiday = holidayList[indexPath.row]
+        let holiday = holidayListForTB[indexPath.row]
         
         if let name = holiday.name {
             cell.textLabel?.text = name

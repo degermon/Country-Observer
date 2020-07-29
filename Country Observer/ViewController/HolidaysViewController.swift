@@ -15,7 +15,7 @@ class HolidaysViewController: UIViewController {
     var holidayList: [HolidayDetail] = []
     var countryName: String? = ""
     
-    private var currentDate: String = ""
+    private let dateRelated = DateRelated()
     private var holidayListForTB: [HolidayDetail] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -26,10 +26,9 @@ class HolidaysViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        holidayListForTB = correctDateOfHolidays(list: holidayList)
+        holidayListForTB = dateRelated.correctDateOfHolidays(list: holidayList)
         configureTableView()
         setTitle()
-        currentDate = getCurrentDate()
     }
     
     func configureTableView() {
@@ -43,27 +42,6 @@ class HolidaysViewController: UIViewController {
         }
     }
     
-    func getCurrentDate() -> String {
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        let formattedDate = format.string(from: date)
-        
-        return formattedDate
-    }
-    
-    func correctDateOfHolidays(list: [HolidayDetail]) -> [HolidayDetail] { // correct/cut date item of holiday to only date without time if there is any present
-        var index = 0
-        var correctedList: [HolidayDetail] = []
-        for item in list {
-            correctedList.append(item)
-            let correctDate = item.date.iso?.prefix(10)
-            correctedList[index].date.iso = String(correctDate ?? "")
-            index += 1
-        }
-        return correctedList
-    }
-    
     // MARK: - Actions
     
     @IBAction func allFilterTapped(_ sender: Any) {
@@ -71,15 +49,17 @@ class HolidaysViewController: UIViewController {
     }
     
     @IBAction func thisMonthFilterTapped(_ sender: Any) {
+        holidayListForTB = dateRelated.getHolidays(forTimespan: .thisMonth, holidayList: holidayList)
     }
     
     @IBAction func upcomingFilterTapped(_ sender: Any) {
+        holidayListForTB = dateRelated.getHolidays(forTimespan: .upcomming, holidayList: holidayList)
     }
 }
 
 extension HolidaysViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return holidayList.count
+        return holidayListForTB.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -12,6 +12,7 @@ enum CountryError: Error {
     case noCountryDataAvailable
     case cannotProcessCountryData
 }
+
 class CountryRequest {
     func getCountries(completion: @escaping (Result<[Country], CountryError>) -> ()) {
         guard let resourceURL = URL(string: "https://restcountries.eu/rest/v2/all") else { fatalError() }

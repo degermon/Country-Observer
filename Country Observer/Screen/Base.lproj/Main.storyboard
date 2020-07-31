@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kam-cR-cZO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kam-cR-cZO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -75,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAW-bW-yos">
-                                <rect key="frame" x="10" y="103" width="394" height="688"/>
+                                <rect key="frame" x="10" y="218" width="394" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -89,21 +89,31 @@
                                     <action selector="showHolidaysBtTapped:" destination="8nM-Ai-Idg" eventType="touchUpInside" id="Zv1-oz-wIC"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Ej-Pw-V7E">
+                                <rect key="frame" x="132" y="103" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="C0F-ym-kA7"/>
+                                    <constraint firstAttribute="height" constant="100" id="rL5-8P-8dj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="gRB-bm-Htg" firstAttribute="top" secondItem="ZAW-bW-yos" secondAttribute="bottom" constant="15" id="13n-hD-S9e"/>
                             <constraint firstItem="zCI-VQ-xjP" firstAttribute="bottom" secondItem="gRB-bm-Htg" secondAttribute="bottom" constant="20" id="7gL-Js-5Ad"/>
                             <constraint firstItem="zCI-VQ-xjP" firstAttribute="trailing" secondItem="gRB-bm-Htg" secondAttribute="trailing" constant="15" id="8wa-x9-a0K"/>
+                            <constraint firstItem="gRB-bm-Htg" firstAttribute="top" secondItem="ZAW-bW-yos" secondAttribute="bottom" constant="15" id="AWg-jW-KFb"/>
+                            <constraint firstItem="6Ej-Pw-V7E" firstAttribute="top" secondItem="zCI-VQ-xjP" secondAttribute="top" constant="15" id="LBP-jt-M8h"/>
+                            <constraint firstItem="6Ej-Pw-V7E" firstAttribute="centerX" secondItem="Jj3-qf-uyZ" secondAttribute="centerX" id="SxO-Hc-ybZ"/>
+                            <constraint firstItem="ZAW-bW-yos" firstAttribute="leading" secondItem="zCI-VQ-xjP" secondAttribute="leading" constant="10" id="T0c-Mo-Ytp"/>
                             <constraint firstItem="gRB-bm-Htg" firstAttribute="leading" secondItem="zCI-VQ-xjP" secondAttribute="leading" constant="15" id="cIH-QJ-Uf5"/>
-                            <constraint firstItem="zCI-VQ-xjP" firstAttribute="trailing" secondItem="ZAW-bW-yos" secondAttribute="trailing" constant="10" id="iNH-mQ-aVr"/>
-                            <constraint firstItem="ZAW-bW-yos" firstAttribute="leading" secondItem="zCI-VQ-xjP" secondAttribute="leading" constant="10" id="wq2-Hz-ZbP"/>
-                            <constraint firstItem="ZAW-bW-yos" firstAttribute="top" secondItem="zCI-VQ-xjP" secondAttribute="top" constant="15" id="x6n-hU-nST"/>
+                            <constraint firstItem="zCI-VQ-xjP" firstAttribute="trailing" secondItem="ZAW-bW-yos" secondAttribute="trailing" constant="10" id="dmv-5V-1CA"/>
+                            <constraint firstItem="ZAW-bW-yos" firstAttribute="top" secondItem="6Ej-Pw-V7E" secondAttribute="bottom" constant="15" id="hWL-t4-avh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zCI-VQ-xjP"/>
                     </view>
                     <navigationItem key="navigationItem" id="N9d-5u-tpu"/>
                     <connections>
+                        <outlet property="imageView" destination="6Ej-Pw-V7E" id="Yvu-sF-PWv"/>
                         <outlet property="showHolidaysButton" destination="gRB-bm-Htg" id="H4v-GI-WGo"/>
                         <outlet property="textView" destination="ZAW-bW-yos" id="EdP-dO-qiB"/>
                         <segue destination="kI2-5U-YPJ" kind="show" identifier="JustForView2" id="hl7-3l-y8z"/>

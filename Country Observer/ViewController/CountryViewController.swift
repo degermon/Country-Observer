@@ -12,11 +12,11 @@ class CountryViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var showHolidaysButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     var country: Country?
     private var holidays: [HolidayDetail] = []
     private let countryUnwrap = SafeCountryDataUnwrap()
-
     
     // MARK: - Config
     
@@ -25,6 +25,12 @@ class CountryViewController: UIViewController {
         setTitle()
         getHolidays {
             self.composeText()
+        }
+        let countryRequest = CountryRequest()
+        countryRequest.downloadImageFor(country: countryUnwrap.safelyUnwrapString(item: country?.alpha2Code)) { (resultImage) in
+            DispatchQueue.main.async {
+                self.imageView.image = resultImage
+            }
         }
     }
         

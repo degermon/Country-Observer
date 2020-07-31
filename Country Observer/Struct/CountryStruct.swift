@@ -10,10 +10,10 @@ import Foundation
 
 struct Country: Decodable {
     var alpha2Code: String?
+    var capital: String?
     var currencies: [Currency]
     var languages: [Language]
     var name: String?
-    var capital: String?
     var population: Int?
     var region: String?
     var timezones: [String?]

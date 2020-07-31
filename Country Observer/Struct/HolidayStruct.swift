@@ -17,9 +17,9 @@ struct Holidays: Decodable {
 }
 
 struct HolidayDetail: Decodable {
-    var name: String?
     var date: HolidayDate
     var description: String?
+    var name: String?
 }
 
 struct HolidayDate: Decodable {

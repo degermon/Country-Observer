@@ -6,7 +6,7 @@
 //  Copyright © 2020 Daniel Šuškevič. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum CountryError: Error {
     case noCountryDataAvailable
@@ -30,6 +30,20 @@ class CountryRequest {
             } catch {
                 completion(.failure(.cannotProcessCountryData))
             }
+        }
+        dataTask.resume()
+    }
+    
+    func downloadImageFor(country: String, completion: @escaping (UIImage?)->()) {
+        guard let resourceURL = URL(string: "https://www.countryflags.io/\(country.lowercased())/flat/64.png") else { fatalError() }
+        
+        let dataTask = URLSession.shared.dataTask(with: resourceURL) { (data, error, _) in
+            guard let data = data else {
+                completion(UIImage())
+                return
+            }
+            let image = UIImage(data: data)
+            completion(image)
         }
         dataTask.resume()
     }

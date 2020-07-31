@@ -30,15 +30,52 @@ class CountryViewController: UIViewController {
         countryRequest.downloadImageFor(country: countryUnwrap.safelyUnwrapString(item: country?.alpha2Code)) { (resultImage) in
             DispatchQueue.main.async {
                 self.imageView.image = resultImage
+                self.setNavigationBarImageTitle(flagImage: resultImage ?? UIImage())
             }
         }
     }
-        
-    func setTitle() { // set navigation title
+    
+    func setTitle() { // set navigation bar title (will display title until flag image is loaded, then navigation bar data will be changed)
         guard let countryName = country?.name else {
             return
         }
         self.title = countryName
+    }
+    
+    func setNavigationBarImageTitle(flagImage: UIImage) { // as named, set country flag image and title in navigation bar
+        // Only execute the code if there's a navigation controller
+        if self.navigationController == nil {
+            return
+        }
+
+        // Create a navView to add to the navigation bar
+        let navView = UIView()
+
+        // Create the label
+        let label = UILabel()
+        label.text = country?.name
+        label.sizeToFit()
+        label.center = navView.center
+        label.textAlignment = NSTextAlignment.center
+
+        // Create the image view
+        let image = UIImageView()
+        image.image = flagImage
+        // To maintain the image's aspect ratio:
+        let imageAspect = image.image!.size.width/image.image!.size.height
+        // Setting the image frame so that it's immediately before the text:
+        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
+        image.contentMode = UIView.ContentMode.scaleAspectFit
+
+        // Add both the label and image view to the navView
+        navView.addSubview(label)
+        navView.addSubview(image)
+
+        // Set the navigation bar's navigation item's titleView to the navView
+        self.navigationItem.titleView = navView
+
+        // Set the navView's frame to fit within the titleView
+        navView.sizeToFit()
     }
     
     func getHolidays(completion: @escaping ()->()) {

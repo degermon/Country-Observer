@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackButtonTitle()
         startInternetconnectionMonitor()
         configureTableView()
         configureSearchBar()
@@ -72,6 +73,10 @@ class HomeViewController: UIViewController {
                 self?.countryListForTB = countryList
             }
         }
+    }
+    
+    func setBackButtonTitle() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }
 

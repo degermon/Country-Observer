@@ -15,6 +15,7 @@ class CountryViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var country: Country?
+    private var countryFlagImage: UIImage? = UIImage()
     private var holidays: [HolidayDetail] = []
     private let countryUnwrap = SafeCountryDataUnwrap()
     
@@ -22,6 +23,7 @@ class CountryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackButtonTitle()
         setTitle()
         getHolidays {
             self.composeText()
@@ -30,9 +32,14 @@ class CountryViewController: UIViewController {
         countryRequest.downloadImageFor(country: countryUnwrap.safelyUnwrapString(item: country?.alpha2Code)) { (resultImage) in
             DispatchQueue.main.async {
                 self.imageView.image = resultImage
+                self.countryFlagImage = resultImage
                 self.setNavigationBarImageTitle(flagImage: resultImage ?? UIImage())
             }
         }
+    }
+    
+    func setBackButtonTitle() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     func setTitle() { // set navigation bar title (will display title until flag image is loaded, then navigation bar data will be changed)
@@ -48,28 +55,8 @@ class CountryViewController: UIViewController {
             return
         }
 
-        // Create a navView to add to the navigation bar
-        let navView = UIView()
-
-        // Create the label
-        let label = UILabel()
-        label.text = country?.name
-        label.sizeToFit()
-        label.center = navView.center
-        label.textAlignment = NSTextAlignment.center
-
-        // Create the image view
-        let image = UIImageView()
-        image.image = flagImage
-        // To maintain the image's aspect ratio:
-        let imageAspect = image.image!.size.width/image.image!.size.height
-        // Setting the image frame so that it's immediately before the text:
-        image.frame = CGRect(x: label.frame.origin.x-label.frame.size.height*imageAspect, y: label.frame.origin.y, width: label.frame.size.height*imageAspect, height: label.frame.size.height)
-        image.contentMode = UIView.ContentMode.scaleAspectFit
-
-        // Add both the label and image view to the navView
-        navView.addSubview(label)
-        navView.addSubview(image)
+        let viewRelated = ViewRelated()
+        let navView = viewRelated.configureNavigationBarTitleFor(title: country?.name, countryFlagImage: flagImage)
 
         // Set the navigation bar's navigation item's titleView to the navView
         self.navigationItem.titleView = navView
@@ -101,7 +88,7 @@ class CountryViewController: UIViewController {
     
     func composeText() {
         var textToDisplay = ""
-        textToDisplay.append(contentsOf: "\(countryUnwrap.safelyUnwrapString(item: country?.name)) is a country located in \(countryUnwrap.safelyUnwrapString(item: country?.region)) and it's capital is \(countryUnwrap.safelyUnwrapString(item: country?.capital)).")
+        textToDisplay.append(contentsOf: "\(countryUnwrap.safelyUnwrapString(item: country?.name)) is a country located in \(countryUnwrap.safelyUnwrapString(item: country?.region)), \(countryUnwrap.safelyUnwrapString(item: country?.subregion)) and it's capital is \(countryUnwrap.safelyUnwrapString(item: country?.capital)).\n")
         textToDisplay.append(contentsOf:  "The short form of this country name is \(countryUnwrap.safelyUnwrapString(item: country?.alpha2Code)).\n")
         textToDisplay.append(contentsOf: "This country has a population of \(countryUnwrap.safelyUnwrapInt(item: country?.population)) people.\n")
         textToDisplay.append(contentsOf: "The currency used in this country is \(countryUnwrap.processCurrencies(currencies: country?.currencies)).\n")
@@ -123,6 +110,7 @@ class CountryViewController: UIViewController {
         if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "ShowHolidays") as? HolidaysViewController {
             destinationVC.holidayList = holidays
             destinationVC.countryName = country?.name
+            destinationVC.countryFlagImage = countryFlagImage
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }

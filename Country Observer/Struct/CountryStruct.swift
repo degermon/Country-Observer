@@ -16,6 +16,7 @@ struct Country: Decodable {
     var name: String?
     var population: Int?
     var region: String?
+    var subregion: String?
     var timezones: [String?]
 }
 

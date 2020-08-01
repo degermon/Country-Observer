@@ -13,6 +13,7 @@ class HolidaysViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var holidayList: [HolidayDetail] = []
+    var countryFlagImage: UIImage? = UIImage()
     var countryName: String? = ""
     
     private let dateRelated = DateRelated()
@@ -37,9 +38,19 @@ class HolidaysViewController: UIViewController {
     }
     
     func setTitle() { // set navigation title
-        if let name = countryName {
-            self.title = "\(name) Holidays"
+        // Only execute the code if there's a navigation controller
+        if self.navigationController == nil {
+            return
         }
+
+        let viewRelated = ViewRelated()
+        let navView = viewRelated.configureNavigationBarTitleFor(title: countryName, countryFlagImage: countryFlagImage ?? UIImage())
+
+        // Set the navigation bar's navigation item's titleView to the navView
+        self.navigationItem.titleView = navView
+
+        // Set the navView's frame to fit within the titleView
+        navView.sizeToFit()
     }
     
     // MARK: - Actions

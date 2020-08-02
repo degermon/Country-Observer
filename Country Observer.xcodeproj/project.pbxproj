@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65166FE424D5C06D00E49435 /* ViewRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65166FE324D5C06D00E49435 /* ViewRelated.swift */; };
+		65166FE624D70E6E00E49435 /* TextFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65166FE524D70E6E00E49435 /* TextFormatting.swift */; };
 		652790AF24D1C64E0016DE5D /* DateRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652790AE24D1C64E0016DE5D /* DateRelated.swift */; };
 		6529E58E24AB971100A392B7 /* SafeCountryDataUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529E58D24AB971100A392B7 /* SafeCountryDataUnwrap.swift */; };
 		6529E59024AB9C2000A392B7 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6529E58F24AB9C2000A392B7 /* AppAlerts.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		65166FE324D5C06D00E49435 /* ViewRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRelated.swift; sourceTree = "<group>"; };
+		65166FE524D70E6E00E49435 /* TextFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormatting.swift; sourceTree = "<group>"; };
 		652790AE24D1C64E0016DE5D /* DateRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRelated.swift; sourceTree = "<group>"; };
 		6529E58D24AB971100A392B7 /* SafeCountryDataUnwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeCountryDataUnwrap.swift; sourceTree = "<group>"; };
 		6529E58F24AB9C2000A392B7 /* AppAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlerts.swift; sourceTree = "<group>"; };
@@ -60,9 +62,10 @@
 		6529E58C24AB96B900A392B7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6529E58D24AB971100A392B7 /* SafeCountryDataUnwrap.swift */,
 				6529E58F24AB9C2000A392B7 /* AppAlerts.swift */,
 				652790AE24D1C64E0016DE5D /* DateRelated.swift */,
+				6529E58D24AB971100A392B7 /* SafeCountryDataUnwrap.swift */,
+				65166FE524D70E6E00E49435 /* TextFormatting.swift */,
 				65166FE324D5C06D00E49435 /* ViewRelated.swift */,
 			);
 			path = Classes;
@@ -221,6 +224,7 @@
 				65F2B35024A8E9B400654836 /* CountryViewController.swift in Sources */,
 				65F2B32D24A4F78200654836 /* AppDelegate.swift in Sources */,
 				65F2B34524A4FA4800654836 /* HolidayStruct.swift in Sources */,
+				65166FE624D70E6E00E49435 /* TextFormatting.swift in Sources */,
 				6529E58E24AB971100A392B7 /* SafeCountryDataUnwrap.swift in Sources */,
 				65F2B34C24A4FD1F00654836 /* CountryRequest.swift in Sources */,
 				65F2B32F24A4F78200654836 /* SceneDelegate.swift in Sources */,

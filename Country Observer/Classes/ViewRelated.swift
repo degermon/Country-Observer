@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewRelated {
-    func configureNavigationBarTitleFor(title: String?, countryFlagImage: UIImage) -> UIView {
+    func configureNavigationBarTitleFor(title: String, countryFlagImage: UIImage) -> UIView {
         
         // Create a navView to add to the navigation bar
         let navView = UIView()

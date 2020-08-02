@@ -56,7 +56,8 @@ class CountryViewController: UIViewController {
         }
 
         let viewRelated = ViewRelated()
-        let navView = viewRelated.configureNavigationBarTitleFor(title: country?.name, countryFlagImage: flagImage)
+        let navView = viewRelated.configureNavigationBarTitleFor(title: SafeCountryDataUnwrap.shared.safelyUnwrapString(item: country?.name),
+                                                                 countryFlagImage: countryFlagImage ?? UIImage())
 
         // Set the navigation bar's navigation item's titleView to the navView
         self.navigationItem.titleView = navView

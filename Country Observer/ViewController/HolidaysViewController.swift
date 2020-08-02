@@ -16,6 +16,7 @@ class HolidaysViewController: UIViewController {
     var countryFlagImage: UIImage? = UIImage()
     var countryName: String? = ""
     
+    private let countryUnwrap = SafeCountryDataUnwrap()
     private let dateRelated = DateRelated()
     private var holidayListForTB: [HolidayDetail] = [] {
         didSet {
@@ -44,7 +45,8 @@ class HolidaysViewController: UIViewController {
         }
 
         let viewRelated = ViewRelated()
-        let navView = viewRelated.configureNavigationBarTitleFor(title: countryName, countryFlagImage: countryFlagImage ?? UIImage())
+        let navView = viewRelated.configureNavigationBarTitleFor(title: countryUnwrap.safelyUnwrapString(item: countryName),
+                                                                 countryFlagImage: countryFlagImage ?? UIImage())
 
         // Set the navigation bar's navigation item's titleView to the navView
         self.navigationItem.titleView = navView
